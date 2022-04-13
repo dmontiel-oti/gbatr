@@ -1,5 +1,5 @@
 ##path 1 = location of NYCgeo.dll file after GBAT install
-PKG_LIBS = -L"/opt/version-22a_22.11/lib" -lNYCgeo
+PKG_LIBS = -L"/opt/version-22a_22.11/lib" -lgeo
 
 ##path 1 = location of NYCgeo.h and pac.h files after GBAT install
 PKG_CPPFLAGS =  -I"/opt/version-22a_22.11/include/foruser"
