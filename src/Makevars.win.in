@@ -1,5 +1,5 @@
 GBAT_PATH = @GBAT_PATH@
-GBAT_DLL = /opt/version-22a_22.11/lib/libgeo.so
+GBAT_DLL = @GBAT_DLL@
 
 ##path 1 = location of NYCgeo.dll file after GBAT install
 PKG_LIBS =  -L"$(GBAT_PATH)/Bin" -l$(GBAT_DLL)
