@@ -1,14 +1,8 @@
 #include <Rcpp.h>
 using namespace Rcpp;
 
-#if defined(WIN32)
-//#define ROLE __declspec(dllimport)
-#define ROLE __declspec(dllimport) __stdcall
-#elif defined(x64)
-#define ROLE __declspec(dllimport) __stdcall
-#elif defined(__linux__)
+
 #define ROLE __stdcall
-#endif
 
 #include <NYCgeo.h>
 #include <pac.h>
