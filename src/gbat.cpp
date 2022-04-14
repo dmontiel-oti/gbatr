@@ -1,9 +1,11 @@
 #include <Rcpp.h>
 using namespace Rcpp;
-#include <NYCgeo.h>
+
 
 #define ROLE __stdcall
-
+#include <NYCgeo.h>
+#include <pac.h>
+#include <cstring>
 
 // [[Rcpp::export]]
 DataFrame GBAT(DataFrame x, std::string id_col, std::string add_col, std::string third_col, std::string third_col_type = "boro_code") {
