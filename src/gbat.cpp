@@ -1,11 +1,34 @@
 #include <Rcpp.h>
 using namespace Rcpp;
 
-
+#include <dlfcn.h>
 #define ROLE __stdcall
-#include <geo.h>
+// #include <geo.h>
 #include <pac.h>
 #include <cstring>
+
+void* handle = dlopen("/opt/version-22a.22.11/libgeo.so", RTLD_LAZY);
+    
+if (!handle) {
+    cerr << "Cannot open library: " << dlerror() << '\n';
+    return 1;
+}
+
+// load the symbol
+cout << "Loading symbol hello...\n";
+typedef void (*hello_t)();
+
+// reset errors
+dlerror();
+hello_t geo = (hello_t) dlsym(handle, "geo");
+const char *dlsym_error = dlerror();
+if (dlsym_error) {
+    cerr << "Cannot load symbol 'geo': " << dlsym_error <<
+        '\n';
+    dlclose(handle);
+    return 1;
+}
+
 
 // [[Rcpp::export]]
 DataFrame GBAT(DataFrame x, std::string id_col, std::string add_col, std::string third_col, std::string third_col_type = "boro_code") {
