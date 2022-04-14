@@ -4,7 +4,7 @@ using namespace Rcpp;
 
 #define ROLE __stdcall
 
-/
+
 // [[Rcpp::export]]
 DataFrame GBAT(DataFrame x, std::string id_col, std::string add_col, std::string third_col, std::string third_col_type = "boro_code") {
 
