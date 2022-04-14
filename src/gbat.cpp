@@ -4,29 +4,7 @@ using namespace Rcpp;
 
 #define ROLE __stdcall
 
-// #include <NYCgeo.h>
-#include <pac.h>
-#include <cstring>
-/* first define a function pointer variable to hold the function's address */
-struct local_file* (*NYCgeo)(const char* file_path);
-void* lib_handle;       /* handle of the opened library */
-
-lib_handle = dlopen("/opt/version-22a_22.11/lib/libgeo.so", RTLD_LAZY);
-/*
-if (!lib_handle) {
-    fprintf(stderr, "Error during dlopen(): %s\n", dlerror());
-    exit(1);
-}
-*/
-void __structcall NYCgeo = dlsym(lib_handle, "NYCgeo");
-/* check that no error occured */
-// error_msg = dlerror();
-/*
-if (error_msg) {
-    fprintf(stderr, "Error locating 'NYCgeo' - %s\n", error_msg);
-    exit(1);
-}
-*/
+/
 // [[Rcpp::export]]
 DataFrame GBAT(DataFrame x, std::string id_col, std::string add_col, std::string third_col, std::string third_col_type = "boro_code") {
 
