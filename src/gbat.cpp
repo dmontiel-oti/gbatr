@@ -7,7 +7,8 @@ using namespace Rcpp;
 // #include <NYCgeo.h>
 #include <pac.h>
 #include <cstring>
-
+/* first define a function pointer variable to hold the function's address */
+struct local_file* (*NYCgeo)(const char* file_path);
 void* lib_handle;       /* handle of the opened library */
 
 lib_handle = dlopen("/opt/version-22a_22.11/lib/libgeo.so", RTLD_LAZY);
