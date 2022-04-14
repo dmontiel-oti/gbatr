@@ -15,7 +15,7 @@ if (!lib_handle) {
     fprintf(stderr, "Error during dlopen(): %s\n", dlerror());
     exit(1);
 }
-NYCgeo = dlsym(lib_handle, "NYCgeo");
+void __structcall NYCgeo = dlsym(lib_handle, "NYCgeo");
 /* check that no error occured */
 error_msg = dlerror();
 if (error_msg) {
