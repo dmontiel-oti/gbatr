@@ -7,6 +7,10 @@ using namespace Rcpp;
 #include <pac.h>
 #include <cstring>
 
+
+using std::cout;
+using std::cerr;
+
 void* handle = dlopen("/opt/version-22a.22.11/libgeo.so", RTLD_LAZY);
 if (!handle) {
     cerr << "Cannot open library: " << dlerror() << '\n';
