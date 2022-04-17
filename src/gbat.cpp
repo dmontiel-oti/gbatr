@@ -1,6 +1,6 @@
 #include <Rcpp.h>
 using namespace Rcpp;
-#include <iostream.h>
+// #include <iostream.h>
 #include <dlfcn.h>
 #define ROLE __stdcall
 // #include <geo.h>
