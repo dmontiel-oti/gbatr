@@ -8,27 +8,30 @@ using namespace Rcpp;
 #include <cstring>
 
 
-using std::cout;
-using std::cerr;
 
-void* handle = dlopen("/opt/version-22a.22.11/libgeo.so", RTLD_LAZY);
-if (!handle) {
-    cerr << "Cannot open library: " << dlerror() << '\n';
-        return 1;
-}   
-
-// load the symbol
-
-typedef void (*hello_t)(char *ptr_wa1, char *ptr_wa2);
-
-// reset errors
-extern "C" hello_t NYCgeo = (hello_t) dlsym(handle, "geo");
 
 
 
 // [[Rcpp::export]]
 DataFrame GBAT(DataFrame x, std::string id_col, std::string add_col, std::string third_col, std::string third_col_type = "boro_code") {
+    using std::cout;
+    using std::cerr;
 
+    void* handle = dlopen("/opt/version-22a.22.11/libgeo.so", RTLD_LAZY);
+    if (!handle) {
+        cerr << "Cannot open library: " << dlerror() << '\n';
+            return 1;
+    }   
+
+    // load the symbol
+
+    typedef void (*hello_t)(char *ptr_wa1, char *ptr_wa2);
+
+    // reset errors
+    extern "C" hello_t NYCgeo = (hello_t) dlsym(handle, "geo");
+    
+    
+    
   CharacterVector id_vec = x[id_col];
   CharacterVector add_vec = x[add_col];
   //CharacterVector boro_vec = x[boro_col];
