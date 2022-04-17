@@ -8,7 +8,10 @@ using namespace Rcpp;
 #include <cstring>
 
 void* handle = dlopen("/opt/version-22a.22.11/libgeo.so", RTLD_LAZY);
-    
+if (!handle) {
+    cerr << "Cannot open library: " << dlerror() << '\n';
+        return 1;
+}   
 
 // load the symbol
 
