@@ -14,7 +14,7 @@ using namespace Rcpp;
  typedef void (*hello_t)(char *ptr_wa1, char *ptr_wa2);
 
     // reset errors
- extern "C" hello_t NYCgeo = (hello_t) dlsym(handle, "geo");
+ extern "C" hello_t geo = (hello_t) dlsym(handle, "geo");
 
 
 
@@ -125,15 +125,15 @@ DataFrame GBAT(DataFrame x, std::string id_col, std::string add_col, std::string
 
     //call extended function 1A
     uwa1_1a.wa1_1a.input.mode_switch = 'X';
-    NYCgeo(uwa1_1a.cwa1_1a, uwa2f1ax.cwa2f1ax);
+    geo(uwa1_1a.cwa1_1a, uwa2f1ax.cwa2f1ax);
 
     //call extended function 1E
     uwa1_1e.wa1_1e.input.mode_switch = 'X';
-    NYCgeo(uwa1_1e.cwa1_1e, uwa2f1ex.cwa2f1ex);
+    geo(uwa1_1e.cwa1_1e, uwa2f1ex.cwa2f1ex);
 
     //call extended function AP
     uwa1_ap.wa1_ap.input.mode_switch = 'X';
-    NYCgeo(uwa1_ap.cwa1_ap, uwa2fapx.cwa2fapx);
+    geo(uwa1_ap.cwa1_ap, uwa2fapx.cwa2fapx);
 
     //all variables for function 1A
     std::string all_wa1_1a_var;
