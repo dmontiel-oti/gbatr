@@ -1,6 +1,6 @@
 #include <Rcpp.h>
 using namespace Rcpp;
-
+#include <iostream.h>
 #include <dlfcn.h>
 #define ROLE __stdcall
 // #include <geo.h>
@@ -15,7 +15,7 @@ void* handle = dlopen("/opt/version-22a.22.11/libgeo.so", RTLD_LAZY);
 typedef void (*hello_t)(char *ptr_wa1, char *ptr_wa2);
 
 // reset errors
-hello_t geo = (hello_t) dlsym(handle, "geo");
+external "C" hello_t geo = (hello_t) dlsym(handle, "geo");
 
 
 
