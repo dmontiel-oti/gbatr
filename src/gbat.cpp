@@ -6,7 +6,7 @@ using namespace Rcpp;
 // #include <NYCgeo.h>
 #include <pac.h>
 #include <cstring>
-typedef void (*hello_t)(char *ptr_wa1, char *ptr_wa2);
+typedef (*hello_t)(char *ptr_wa1, char *ptr_wa2);
 extern "C" hello_t NYCgeo(char *ptr_wa1, char *ptr_wa2=NULL){
   using std::cout;
   using std::cerr;
