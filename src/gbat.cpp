@@ -3,12 +3,43 @@ using namespace Rcpp;
 #include <iostream>
 #include <dlfcn.h>
 #define ROLE __stdcall
-#include <NYCgeo.h>
+// #include <NYCgeo.h>
 #include <pac.h>
 #include <cstring>
 
-
-
+extern "C" void NYCgeo(char *ptr_wa1, char *ptr_wa2=NULL){
+  using std::cout;
+  using std::cerr;
+  void* handle = dlopen("/opt/version-22a.22.11/lib/libgeo.so", RTLD_LAZY);
+  if (!handle) {
+        cerr << "Cannot open library: " << dlerror() << '\n';
+        return 1;
+    }
+   cout << "Loading symbol hello...\n"; 
+  typedef void (*hello_t)(char *ptr_wa1, char *ptr_wa2);
+  dlerror();
+    hello_t NYCgeo = (hello_t) dlsym(handle, "geo");
+    const char *dlsym_error = dlerror();
+    if (dlsym_error) {
+        cerr << "Cannot load symbol 'hello': " << dlsym_error <<
+            '\n';
+        dlclose(handle);
+        return 1;
+    }
+    
+    // use it to do the calculation
+    cout << "Calling hello...\n";
+    hello();
+    
+    // close the library
+    cout << "Closing library...\n";
+    dlclose(handle);
+    
+    ret = NYCgeo(ptr_wa1, ptr_wa2)
+    return ret
+}  
+    
+   
 
 
 
