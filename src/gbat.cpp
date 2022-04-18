@@ -3,21 +3,12 @@ using namespace Rcpp;
 #include <iostream>
 #include <dlfcn.h>
 #define ROLE __stdcall
-// #include <geo.h>
+#include <NYCgeo.h>
 #include <pac.h>
 #include <cstring>
 
 
- void* handle = dlopen("/opt/version-22a.22.11/lib/libgeo.so", RTLD_LAZY);
-  if (!handle) {
-        cerr << "Cannot open library: " << dlerror() << '\n';
-        return 1;
-    }  
 
- typedef void (*hello_t)(char *ptr_wa1, char *ptr_wa2);
-
-    // reset errors
- extern "C" hello_t geo = (hello_t) dlsym(handle, "geo");
 
 
 
