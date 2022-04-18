@@ -58,6 +58,7 @@ DataFrame GBAT(DataFrame x, std::string id_col, std::string add_col, std::string
   std::vector<std::string> all_varsAP (id_vec.size());
 
 
+  
   for (int i = 0; i < id_vec.size() ; i++) {
 
     //input for function 1A
