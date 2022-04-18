@@ -7,7 +7,7 @@ using namespace Rcpp;
 #include <pac.h>
 #include <cstring>
 
-extern "C" void __stdcall NYCgeo(char *ptr_wa1, char *ptr_wa2=NULL){
+extern "C" __stdcall NYCgeo(char *ptr_wa1, char *ptr_wa2=NULL){
   using std::cout;
   using std::cerr;
   void* handle = dlopen("/opt/version-22a.22.11/lib/libgeo.so", RTLD_LAZY);
