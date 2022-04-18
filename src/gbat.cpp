@@ -13,7 +13,7 @@ extern "C" void NYCgeo(char *ptr_wa1, char *ptr_wa2=NULL){
   void* handle = dlopen("/opt/version-22a.22.11/lib/libgeo.so", RTLD_LAZY);
   if (!handle) {
         cerr << "Cannot open library: " << dlerror() << '\n';
-        return 1;
+        return NULL;
     }
    cout << "Loading symbol hello...\n"; 
   typedef void (*hello_t)(char *ptr_wa1, char *ptr_wa2);
@@ -24,7 +24,7 @@ extern "C" void NYCgeo(char *ptr_wa1, char *ptr_wa2=NULL){
         cerr << "Cannot load symbol 'hello': " << dlsym_error <<
             '\n';
         dlclose(handle);
-        return 1;
+        return NULL;
     }
     
    
