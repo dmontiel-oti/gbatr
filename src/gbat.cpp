@@ -30,7 +30,7 @@ extern "C" hello_t NYCgeo(char *ptr_wa1, char *ptr_wa2=NULL){
    
     dlclose(handle);
     
-    return NYCgeo(ptr_wa1, ptr_wa2)
+    return NYCgeo(ptr_wa1, ptr_wa2);
     
 }  
     
