@@ -6,8 +6,8 @@ using namespace Rcpp;
 // #include <NYCgeo.h>
 #include <pac.h>
 #include <cstring>
-
-extern "C" __stdcall NYCgeo(char *ptr_wa1, char *ptr_wa2=NULL){
+typedef void (*hello_t)(char *ptr_wa1, char *ptr_wa2);
+extern "C" hello_t NYCgeo(char *ptr_wa1, char *ptr_wa2=NULL){
   using std::cout;
   using std::cerr;
   void* handle = dlopen("/opt/version-22a.22.11/lib/libgeo.so", RTLD_LAZY);
@@ -16,7 +16,7 @@ extern "C" __stdcall NYCgeo(char *ptr_wa1, char *ptr_wa2=NULL){
         abort();
     }
    cout << "Loading symbol hello...\n"; 
-  typedef void (*hello_t)(char *ptr_wa1, char *ptr_wa2);
+  
   dlerror();
     hello_t NYCgeo = (hello_t) dlsym(handle, "geo");
     const char *dlsym_error = dlerror();
