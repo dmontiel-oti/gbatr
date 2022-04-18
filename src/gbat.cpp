@@ -27,12 +27,7 @@ extern "C" void NYCgeo(char *ptr_wa1, char *ptr_wa2=NULL){
         return 1;
     }
     
-    // use it to do the calculation
-    cout << "Calling hello...\n";
-    hello();
-    
-    // close the library
-    cout << "Closing library...\n";
+   
     dlclose(handle);
     
     ret = NYCgeo(ptr_wa1, ptr_wa2)
