@@ -6,33 +6,8 @@ using namespace Rcpp;
 // #include <NYCgeo.h>
 #include <pac.h>
 #include <cstring>
-typedef (*hello_t)(char *ptr_wa1, char *ptr_wa2);
-extern "C" hello_t NYCgeo(char *ptr_wa1, char *ptr_wa2=NULL){
-  using std::cout;
-  using std::cerr;
-  void* handle = dlopen("/opt/version-22a.22.11/lib/libgeo.so", RTLD_LAZY);
-  if (!handle) {
-        cerr << "Cannot open library: " << dlerror() << '\n';
-        abort();
-    }
-   cout << "Loading symbol hello...\n"; 
-  
-  dlerror();
-    hello_t NYCgeo = (hello_t) dlsym(handle, "geo");
-    const char *dlsym_error = dlerror();
-    if (dlsym_error) {
-        cerr << "Cannot load symbol 'hello': " << dlsym_error <<
-            '\n';
-        dlclose(handle);
-       abort();
-    }
-    
-   
-    dlclose(handle);
-    
-    return NYCgeo(ptr_wa1, ptr_wa2);
-    
-}  
+
+
     
    
 
@@ -40,10 +15,28 @@ extern "C" hello_t NYCgeo(char *ptr_wa1, char *ptr_wa2=NULL){
 
 // [[Rcpp::export]]
 DataFrame GBAT(DataFrame x, std::string id_col, std::string add_col, std::string third_col, std::string third_col_type = "boro_code") {
-    // using std::cout;
-    // using std::cerr;
-
+  using std::cout;
+  using std::cerr;
+  void* handle = dlopen("/opt/version-22a.22.11/lib/libgeo.so", RTLD_LAZY);
+  if (!handle) {
+        cerr << "Cannot open library: " << dlerror() << '\n';
+        abort();
+  }
+  cout << "Loading symbol hello...\n"; 
+  
+  dlerror();
+  typedef void (*hello_t)(char *ptr_wa1, char *ptr_wa2);
+  extern "C" hello_t NYCgeo = (hello_t) dlsym(handle, "geo");
+  const char *dlsym_error = dlerror();
+  if (dlsym_error) {
+        cerr << "Cannot load symbol 'hello': " << dlsym_error <<
+            '\n';
+        dlclose(handle);
+       abort();
+  }
+    
    
+    dlclose(handle);
     
     
     
