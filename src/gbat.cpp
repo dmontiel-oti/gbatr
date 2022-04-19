@@ -10,7 +10,7 @@ typedef void (*hello_t)(char *ptr_wa1, char *ptr_wa2);
 extern "C" hello_t NYCgeo(char *ptr_wa1, char *ptr_wa2){
      using std::cout;
   using std::cerr;
-  void* handle = dlopen("/opt/version-22a.22.11/lib/libgeo.so", RTLD_LAZY);
+  void* handle = dlopen("/opt/version-22a_22.11/lib/libgeo.so", RTLD_LAZY);
   if (!handle) {
         cerr << "Cannot open library: " << dlerror() << '\n';
         abort();
