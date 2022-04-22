@@ -21,7 +21,14 @@ DataFrame GBAT(DataFrame x, std::string id_col, std::string add_col, std::string
         cerr << "Cannot open library: " << dlerror() << '\n';
         return abort();
     }
-  
+  geo geo = (geo) dlsym(handle, "geo");
+  const char *dlsym_error = dlerror();
+  if (dlsym_error) {
+        cerr << "Cannot load symbol 'hello': " << dlsym_error <<
+            '\n';
+        dlclose(handle);
+        return abort();
+    }
   
   
     
@@ -154,7 +161,7 @@ DataFrame GBAT(DataFrame x, std::string id_col, std::string add_col, std::string
     all_varsAP[i] = all_wa1_ap_var;
 
   }
-
+  dlclose(handle);
   //RCPP limits maxinum number of returned fields to n=10
   //export spacedeliminated results for later parsing within R
   return Rcpp::DataFrame::create( Named(id_col)= id_vec
