@@ -8,7 +8,7 @@ using namespace Rcpp;
 #include <cstring>
 using std::cout;
 using std::cerr;
-void* handle = dlopen("/opt/version-22a_22.11/lib/libgeo.so", RTLD_LAZY);
+
   
    
 
@@ -16,7 +16,11 @@ void* handle = dlopen("/opt/version-22a_22.11/lib/libgeo.so", RTLD_LAZY);
 
 // [[Rcpp::export]]
 DataFrame GBAT(DataFrame x, std::string id_col, std::string add_col, std::string third_col, std::string third_col_type = "boro_code") {
- 
+  void* handle = dlopen("/opt/version-22a_22.11/lib/libgeo.so", RTLD_LAZY);
+  if (!handle) {
+        cerr << "Cannot open library: " << dlerror() << '\n';
+        return abort();
+    }
   
   
   
