@@ -135,6 +135,14 @@ during
 installation](https://github.com/r-lib/remotes#environment-variables)
 before you try to install:
 
+```
+sudo cd /opt && \
+wget https://www1.nyc.gov/assets/planning/download/zip/data-maps/open-data/linux_geo22a1_22_11.zip && \
+unzip linux_geo22a1_22_11.zip  && \
+rm linux_geo22a1_22_11.zip```
+```
+
+
 ``` r
 Sys.setenv(R_REMOTES_NO_ERRORS_FROM_WARNINGS="true")
 remotes::install_github("dmontiel-oti/gbatr")
