@@ -16,13 +16,13 @@ using std::cerr;
 
 // [[Rcpp::export]]
 DataFrame GBAT(DataFrame x, std::string id_col, std::string add_col, std::string third_col, std::string third_col_type = "boro_code") {
-  typedef void geo(char *ptr_wa1, char *ptr_wa2);
+  typedef void (*geo_t)(char *ptr_wa1, char *ptr_wa2);
   void* handle = dlopen("/opt/version-22a_22.11/lib/libgeo.so", RTLD_LAZY);
   if (!handle) {
         cerr << "Cannot open library: " << dlerror() << '\n';
         abort();
     }
-  geo = (geo) dlsym(handle, "geo");
+  geo_t geo = (geo_t) dlsym(handle, "geo");
   const char *dlsym_error = dlerror();
   if (dlsym_error) {
         cerr << "Cannot load symbol 'hello': " << dlsym_error <<
