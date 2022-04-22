@@ -118,13 +118,12 @@ installed. Geosupport is a free geocoding application developed by the
 NYC Department of City Planning. It is available for Windows and Linux
 and can be downloaded from the [City Planning
 website](https://www1.nyc.gov/site/planning/data-maps/open-data/dwn-gde-home.page).
-For now, gbatr has only been tested using the Windows 64-bit version of
-Geosupport, so let me know if you’re having troubling installing on
-Linux or 32-bit Windows.
+gmculp's R package (https://github.com/gmculp/rGBAT16AB) from which this package
+was written for use with Windows. The source has code has been updated to work
+with Linux. 
 
 When installing Geosupport Desktop, it is strongly recommended to use
-the default installation path (`C:/Program Files/Geosupport Desktop
-Edition`). If you install it in this location, building gbatr from
+the path '/opt/version-22a_22.11 . If you install it in this location, building gbatr from
 source should just work. If you can’t install it in this location, you
 may have to do some additional work to build gbatr.
 
@@ -138,7 +137,7 @@ before you try to install:
 
 ``` r
 Sys.setenv(R_REMOTES_NO_ERRORS_FROM_WARNINGS="true")
-remotes::install_github("mfherman/gbatr")
+remotes::install_github("dmontiel-oti/gbatr")
 ```
 
 ## Using `gbat()`
