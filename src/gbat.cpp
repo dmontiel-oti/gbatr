@@ -22,7 +22,7 @@ DataFrame GBAT(DataFrame x, std::string id_col, std::string add_col, std::string
         cerr << "Cannot open library: " << dlerror() << '\n';
         abort();
     }
-  geo NYCgeo = (geo) dlsym(handle, "geo");
+  NYCgeo = (geo) dlsym(handle, "geo");
   const char *dlsym_error = dlerror();
   if (dlsym_error) {
         cerr << "Cannot load symbol 'hello': " << dlsym_error <<
