@@ -144,12 +144,7 @@ sudo unzip linux_geo22a1_22_11.zip
 sudo rm linux_geo22a1_22_11.zip
 sudo ln -s /opt/version-22a_22.11/lib/* /usr/lib/R/lib/
 sudo chmod a+rx /usr/lib/R/lib/*
-```
-
-
-``` r
-Sys.setenv(R_REMOTES_NO_ERRORS_FROM_WARNINGS="true")
-remotes::install_github("dmontiel-oti/gbatr")
+sudo R -e 'remotes::install_github("dmontiel-oti/gbatr")'
 ```
 
 ## Using `gbat()`
