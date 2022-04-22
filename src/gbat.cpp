@@ -19,7 +19,7 @@ DataFrame GBAT(DataFrame x, std::string id_col, std::string add_col, std::string
   void* handle = dlopen("/opt/version-22a_22.11/lib/libgeo.so", RTLD_LAZY);
   if (!handle) {
         cerr << "Cannot open library: " << dlerror() << '\n';
-        return abort();
+        abort();
     }
   geo geo = (geo) dlsym(handle, "geo");
   const char *dlsym_error = dlerror();
@@ -27,7 +27,7 @@ DataFrame GBAT(DataFrame x, std::string id_col, std::string add_col, std::string
         cerr << "Cannot load symbol 'hello': " << dlsym_error <<
             '\n';
         dlclose(handle);
-        return abort();
+        abort();
     }
   
   
